@@ -295,3 +295,9 @@
   .genre { top: 60vh !important; }
   .plot-container { display: none !important; }
 }
+
+/* Move Pause Button to Bottom */
+.pause-button {
+  top: auto !important;
+  bottom: 5rem !important;
+}
