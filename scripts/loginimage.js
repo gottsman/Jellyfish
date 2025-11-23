@@ -10,14 +10,7 @@
     const isUserLoggedIn = () => {
         // console.log('🔒🖼️Login Image: Checking login status.');
         try {
-            const loggedIn = window.ApiClient && window.ApiClient._currentUser && window.ApiClient._currentUser.Id;
-            if (loggedIn) {
-                // console.log('🔒🖼️Login Image: User is logged in.');
-                return true;
-            } else {
-                // console.log('🔒🖼️Login Image: User is not logged in.');
-                return false;
-            }
+            return !!(window.ApiClient && window.ApiClient._currentUser && window.ApiClient._currentUser.Id);
         } catch (error) {
             // console.error('🔒🖼️❌Login Image: Error checking login status.', error);
             return false;
@@ -28,6 +21,24 @@
 
     const getServerAddress = () => window.location.origin;
     const getUserImageUrl = (userId) => userId ? `${getServerAddress()}/Users/${userId}/Images/Primary?quality=40` : '';
+
+    /**
+     * Injects CSS to hide Manual Login and Forgot Password buttons.
+     */
+    const injectButtonHidingCSS = () => {
+        if (!document.getElementById('loginImageCustomStyles')) {
+            const style = document.createElement('style');
+            style.id = 'loginImageCustomStyles';
+            style.textContent = `
+                #loginPage .btnManual,
+                #loginPage .btnForgotPassword {
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(style);
+            // console.log('🔒🖼️Login Image: CSS injected to hide buttons.');
+        }
+    };
 
     /**
      * Finds the user's profile image and displays it above the password field.
@@ -65,8 +76,12 @@
                     const urlMatch = style.match(/url\(['"]?(.*?)['"]?\)/);
                     if (urlMatch && urlMatch[1]) {
                         // Clean up the URL to get a version with quality set to 40 for better performance
-                        imageUrl = urlMatch[1].replace(/width=\d+&?/g, '').replace(/height=\d+&?/g, '').replace(/tag=[^&]+&?/g, '').replace(/quality=\d+&?/g, 'quality=40&');
-                        if (imageUrl.endsWith('&')) imageUrl = imageUrl.slice(0, -1);
+                        imageUrl = urlMatch[1]
+                            .replace(/width=\d+&?/g, '')
+                            .replace(/height=\d+&?/g, '')
+                            .replace(/tag=[^&]+&?/g, '')
+                            .replace(/quality=\d+&?/g, 'quality=40&')
+                            .replace(/&+$/, ''); // Remove trailing ampersands
                         // console.log(`🔒🖼️Login Image: Found image URL from card style: ${imageUrl}`);
                     }
                 }
@@ -95,7 +110,6 @@
             }
         }
 
-        imageContainer.style.textAlign = 'center';
         imageContainer.innerHTML = '';
 
         // If an image URL was found, display the image and hide the username input
@@ -104,10 +118,13 @@
             const imgElement = document.createElement('img');
             imgElement.src = imageUrl;
             imgElement.alt = `Profile picture for ${currentUsername}`;
-            imgElement.style.width = '125px';
-            imgElement.style.height = '125px';
-            imgElement.style.borderRadius = '50%';
-            imgElement.style.objectFit = 'cover';
+            imgElement.loading = 'lazy'; // Lazy load for better performance
+            imgElement.onerror = () => {
+                // console.error('🔒🖼️❌Login Image: Failed to load image.');
+                imageContainer.innerHTML = '';
+                if (userNameInput) userNameInput.style.display = '';
+                if (userLabel) userLabel.style.display = '';
+            };
             imageContainer.appendChild(imgElement);
 
             if (userNameInput) userNameInput.style.display = 'none';
@@ -121,6 +138,10 @@
         }
     };
 
+    // Store observer instances for cleanup
+    let nameObserver = null;
+    let formObserver = null;
+
     /**
      * Sets up MutationObservers to watch for changes to the login form,
      * such as selecting a different user or showing/hiding the form.
@@ -130,15 +151,19 @@
         const userNameInput = document.getElementById('txtManualName');
         const manualLoginForm = document.querySelector('.manualLoginForm');
 
+        // Clean up existing observers if they exist
+        if (nameObserver) nameObserver.disconnect();
+        if (formObserver) formObserver.disconnect();
+
         // Observe changes to the username input value (when a user card is clicked)
-        const nameObserver = new MutationObserver(() => {
+        nameObserver = new MutationObserver(() => {
             // console.log('🔒🖼️Login Image: Username input value changed.');
             updateProfilePicture();
         });
         nameObserver.observe(userNameInput, { attributes: true, attributeFilter: ['value'] });
 
         // Observe changes to the form's visibility (e.g., switching to passwordless login)
-        const formObserver = new MutationObserver(() => {
+        formObserver = new MutationObserver(() => {
             // console.log('🔒🖼️Login Image: Login form class attribute changed.');
             if (!manualLoginForm.classList.contains('hide')) {
                 console.log('🔒🖼️Login Image: Login form is now visible.');
@@ -172,16 +197,21 @@
     // This part ensures the script only runs on the login page.
 
     let attempts = 0;
-    const maxAttempts = 200; // Try to find the login form for 20 seconds (200 * 100ms)
+    const maxAttempts = 100; // Try to find the login form for 10 seconds (100 * 100ms)
+    let initializationComplete = false;
 
     /**
      * The main initialization function. It checks for the correct page context
      * before running the script's core logic.
      */
     const initialize = () => {
+        // Early exit if already initialized
+        if (initializationComplete) return;
+
         // Condition 1: If a user is already logged in, we are not on the login page. Stop the script.
         if (isUserLoggedIn()) {
             // console.log('🔒🖼️Login Image: User is logged in, stopping script.');
+            initializationComplete = true;
             return;
         }
 
@@ -192,7 +222,9 @@
         if (userNameInput && manualLoginForm) {
             // Elements found, so we are on the login page. Run the main script logic.
             // console.log('🔒🖼️Login Image: Login form found. Setting up observers.');
+            injectButtonHidingCSS();
             setupObservers();
+            initializationComplete = true;
         } else {
             // Elements not found yet. Try again after a short delay.
             attempts++;
@@ -201,6 +233,7 @@
                 setTimeout(initialize, 100);
             } else {
                 // console.log('🔒🖼️Login Image: Max attempts reached. Stopping script.');
+                initializationComplete = true;
             }
         }
     };
