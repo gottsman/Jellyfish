@@ -1707,7 +1707,7 @@ h3.tagline {
 
 /* Change colors for options dropdown */
 .emby-select option {
-  background-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.2);
+  background-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), 0.8);
   color: var(--text-color);
 }
 
