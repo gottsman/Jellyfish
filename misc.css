@@ -206,7 +206,10 @@ button.headerButton.mainDrawerButton.barsMenuButton.headerButtonLeft.paper-icon-
 
 /* Smaller loading spinner */
 .docspinner {
-    top: 1em;
+    position: fixed;
+    top: 2em;
+    left: 50%;
+    transform: translateX(-50%);
     width: 3em;
     height: 3em;
     margin: 0;
