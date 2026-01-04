@@ -607,7 +607,6 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 /* Resets content margin when the drawer is dynamic (no longer permanently shifted). */
 .layout-desktop .libraryPage:not(#editItemMetadataPage),
-.quickConnectSettingsContainer,
 .layout-desktop .appfooter {
     margin-left: 0px !important;
 }
@@ -1028,11 +1027,18 @@ a.emby-button.homeLibraryButton.raised:hover::before {
 /* == List Item Image Styling == */
 /* Ensures list item images (e.g., in search results) are contained and rounded. */
 .listItemImage {
-    background-size: cover !important; /* Image fits within bounds without cropping */
+    border-radius: var(--rounded-cards);
+}
+
+.listItem[data-mediatype="Video"] > .listItemImage {
     border-radius: var(--rounded-cards);
     max-height: fit-content;
-    min-height: 10em !important;
+    width: max-content;
+    padding: 0 1em;
+    background-size: contain !important;
 }
+
+
 
 /* == Indicators (Watched, Count, Media Source) == */
 /* General styling for various indicators on cards/list items. */
@@ -1292,14 +1298,6 @@ h3.tagline {
     }
 }
 
-/* == If Rating is not present, move details up == */
-.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .detailPageWrapperContainer:has(.itemMiscInfo.itemMiscInfo-primary.hide) p.overview.detail-clamp-text {
-    margin-top: 0%;
-}
-
-.detailPageWrapperContainer:has(.itemMiscInfo.itemMiscInfo-primary.hide) p.overview.detail-clamp-text {
-    margin-top: -3%;
-}
 
 
 /* == Reordering Detail Page Sections == */
@@ -1970,6 +1968,11 @@ h3.tagline {
     margin-left: 10px !important;
 }
 
+.appfooter {
+  background: var(--primary-background-color);
+  border-radius: 20px 20px 0 0;
+}
+
 /* Styling for the volume OSD (On-Screen Display) in the desktop layout. */
 .volumeOsd {
     border-radius: var(--rounded-cards) !important;
@@ -1994,6 +1997,7 @@ h3.tagline {
 
 .listItem[data-mediatype="Audio"] {
     padding: 0 1em;
+    margin: .5em;
     border-radius: var(--rounded-cards) !important;
 }
 
