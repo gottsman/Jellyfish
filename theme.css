@@ -2117,30 +2117,31 @@ h3.tagline {
 /* == Hides Backdrop in People Detail page and other adjustments == */
 
 @media (orientation: portrait) {
-.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) > .itemBackdrop {
-    display: none;
+    .layout-mobile #itemDetailPage:has(#itemBirthday:not(.hide)) > .itemBackdrop {
+        display: none;
+    }
+
+    .layout-mobile #itemDetailPage:has(#itemBirthday:not(.hide)) .mainDetailButtons {
+        justify-content: flex-end !important;
+        margin-top: -20vh;
+    }
 }
 
-.layout-mobile #itemDetailPage:has(.cardImageIcon .material-icons.person) .mainDetailButtons {
-    justify-content: flex-end !important;
-    margin-top: -20vh;
-}
-}
-
-.layout-mobile #itemDetailPage:has(.cardImageIcon .material-icons.person) .detailRibbon {
+.layout-mobile #itemDetailPage:has(#itemBirthday:not(.hide)) .detailRibbon {
     display: flex;
     margin-top: 20vh !important;
 }
 
-.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) > .itemBackdrop {
+.layout-desktop #itemDetailPage:has(#itemBirthday:not(.hide)) > .itemBackdrop {
     height: 15% !important;
 }
 
-.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) .mainDetailButtons {
+.layout-desktop #itemDetailPage:has(#itemBirthday:not(.hide)) .mainDetailButtons {
     position: absolute !important;
     right: 6em !important;
     top: 6em !important;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */
 
