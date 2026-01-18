@@ -82,8 +82,7 @@ body:has(#loginPage) .backdropContainer {
     background-size: cover !important;
     background-position: center !important;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    will-change: transform, box-shadow; /* Performance optimization */
+    will-change: transform, box-shadow;
 }
 
 /* Removes default background/shadow from the card padder to let image styles show. */
@@ -353,6 +352,8 @@ body:has(#loginPage:not(.hide)) .standalonePage {
     border: 3px solid var(--secondary-accent-color);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transition: 0.3s ease-in-out;
+    display: block;
+    margin: 0 auto;
 }
 
 #userProfileImageContainer img:hover {
