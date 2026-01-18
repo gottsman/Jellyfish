@@ -612,8 +612,9 @@ progress::-webkit-progress-value  /* Filled part of the progress bar (WebKit) */
 }
 
 /* Move .quickConnectSettingsContainer to the center of the screen */
-div#quickConnectPreferencesPage {
-    margin-left: 25vw !important;
+.layout-desktop div#quickConnectPreferencesPage.libraryPage.userPreferencesPage[data-role="page"] {
+    display: flex;
+    justify-content: center;
 }
 
 /* == Sidebar Styling (Mobile) == */
