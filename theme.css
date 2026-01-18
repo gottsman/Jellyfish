@@ -2117,26 +2117,26 @@ h3.tagline {
 /* == Hides Backdrop in People Detail page and other adjustments == */
 
 @media (orientation: portrait) {
-.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
+.layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) > .itemBackdrop {
     display: none;
 }
 
-.layout-mobile #itemDetailPage:has(.cardImageIcon.person) .mainDetailButtons {
+.layout-mobile #itemDetailPage:has(.cardImageIcon .material-icons.person) .mainDetailButtons {
     justify-content: flex-end !important;
     margin-top: -20vh;
 }
 }
 
-.layout-mobile #itemDetailPage:has(.cardImageIcon.person) .detailRibbon {
+.layout-mobile #itemDetailPage:has(.cardImageIcon .material-icons.person) .detailRibbon {
     display: flex;
     margin-top: 20vh !important;
 }
 
-.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
+.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) > .itemBackdrop {
     height: 15% !important;
 }
 
-.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) .mainDetailButtons {
+.layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon .material-icons.person) .mainDetailButtons {
     position: absolute !important;
     right: 6em !important;
     top: 6em !important;
