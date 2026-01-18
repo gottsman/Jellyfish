@@ -2118,12 +2118,18 @@ h3.tagline {
 
 @media (orientation: portrait) {
 .layout-mobile #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
-    height: 25% !important;
+    display: none;
 }
 
 .layout-mobile #itemDetailPage:has(.cardImageIcon.person) .mainDetailButtons {
     justify-content: flex-end !important;
+    margin-top: -20vh;
 }
+}
+
+.layout-mobile #itemDetailPage:has(.cardImageIcon.person) .detailRibbon {
+    display: flex;
+    margin-top: 20vh !important;
 }
 
 .layout-desktop #itemDetailPage:has(div.detailImageContainer .cardImageIcon.person) > .itemBackdrop {
