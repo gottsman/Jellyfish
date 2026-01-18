@@ -88,10 +88,6 @@ div#listChildrenCollapsible {
     padding-left: 0 !important;
 }
 
-.mainDetailButtons {
-    margin-left: -1.5em !important;
-}
-
 .layout-desktop .itemBackdrop,
 .layout-tv .itemBackdrop {
     height: 45vh !important;
