@@ -7,19 +7,21 @@
 /* 10.11.x+ Detail Page Fixes */
 /* Resize show/movie image on details page for 10.11 */
 .layout-desktop .detailImageContainer .card {
-    top: 0em !important;
+    top: 2em !important;
     width: 18.3vw !important;
     position: absolute !important;
+    left: 3.3% !important;
 }
 
 /* Legacy style to not break pre-10.11.X */
 .layout-desktop .infoWrapper .detailImageContainer .card {
     top: 9em !important;
+    left: unset !important;
 }
 
-.detailImageContainer {
-    margin-left: -4vw !important;
-    margin-top: -8vw !important;
+.layout-desktop .detailImageContainer {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* Re-position title and info for 10.11 */
@@ -87,7 +89,7 @@ div#listChildrenCollapsible {
 }
 
 .mainDetailButtons {
-    margin-left: -5em;
+    margin-left: -1.5em !important;
 }
 
 .layout-desktop .itemBackdrop,
