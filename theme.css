@@ -2142,6 +2142,10 @@ h3.tagline {
     top: 6em !important;
 }
 
+.layout-mobile #itemDetailPage:has(#itemBirthday:not(.hide)) .itemsContainer.padded-right.vertical-wrap {
+    width: 100vw !important;
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~ RESPONSIVENESS & FIXES ~~~~~~~~~~~~~~~~~~~~ */
 
