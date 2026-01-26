@@ -1569,8 +1569,8 @@ h3.tagline {
 
 /* == Player Button Icon Override == */
 /* Changes default player icons for rewind/forward to different Material Icons. */
-.material-icons.fast_rewind::before { content: "\e059"; }  /* Changes to 'skip_previous' icon */
-.material-icons.fast_forward::before { content: "\e057"; } /* Changes to 'skip_next' icon */
+.material-icons.fast_rewind::before { content: "\e042"; }
+.material-icons.fast_forward::before { content: "\f6f4"; }
 
 .btnPip {
     display: none !important; /* Hides the Picture-in-Picture button */
