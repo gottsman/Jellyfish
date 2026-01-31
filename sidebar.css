@@ -1,0 +1,49 @@
+/* This is for changing the order or the sidebar to fit my needs. DO NOT USE */
+
+/* Change the Maindrawer to flex so that we can order items */
+.mainDrawer-scrollContainer.scrollContainer.focuscontainer-y.scrollY {
+    display:flex;
+    flex-direction: column;
+}
+
+/* Home Button at the top */
+a.navMenuOption[href="#/home"] {
+    order: 0;
+}
+
+/* JellyfinEnhanced Section after home button */
+.jellyfinEnhancedSection {
+    order: 1;
+}
+
+/* Custom Links after JellyfinEnhanced Section */
+.customMenuOptions {
+    order: 2;
+}
+
+/* The Requests and Calendar Section after Custom Links  */
+.pluginMenuOptions {
+    order: 2;
+}
+
+/* Rest of the sections follow */
+.libraryMenuOptions {
+    order: 3;
+}
+
+.adminMenuOptions {
+    order: 4;
+}
+
+.userMenuOptions {
+    order: 5;
+}
+
+/* Hide the Plugin Pages Header and Home Screen Sections Link */
+.pluginMenuOptions h3.sidebarHeader {
+    display: none;
+}
+
+a[data-itemid="Jellyfin.Plugin.HomeScreenSections"] {
+    display: none !important;
+}
