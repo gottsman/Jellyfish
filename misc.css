@@ -1,8 +1,3 @@
-/* For some reason, Tomato ratings keep getting removed for me, added this to hide them so that N/A doesnt keep showing up in Media Bar */
-/* .tomato-rating {
-    display: none !important;
-} */
-
 /* I don't like or use favourites bar, this hides it */
 .noHomeButtonHeader .emby-tab-button[data-index="1"] {
   display: none !important;
@@ -30,13 +25,10 @@
   }
   .layout-desktop #castContent .card.overflowPortraitCard,
   .layout-desktop #guestCastContent .card.overflowPortraitCard {
-    width: 13em !important;
+    width: 15em !important;
   }
   .headerButton .material-icons {
-    font-size: 2.2em !important;
-  }
-  .emby-tab-button .emby-button-foreground {
-    font-size: 18px !important;
+    font-size: 2em !important;
   }
   .emby-tab-button {
     height: 40px !important;
@@ -185,11 +177,11 @@
 }
 
 .verticalSection.OSCARS .cardImageContainer::after {
-  background-image: url('https://github.com/jackkerouac/aphrodite/blob/main/images/awards/yellow/oscars.png?raw=true');
+  background-image: url('https://cdn.jsdelivr.net/gh/jackkerouac/aphrodite@main/images/awards/yellow/oscars.png');
 }
 
 .verticalSection.IMDB_250 .cardImageContainer::after {
-  background-image: url('https://github.com/jackkerouac/aphrodite/blob/main/images/awards/yellow/imdb.png?raw=true');
+  background-image: url('https://cdn.jsdelivr.net/gh/jackkerouac/aphrodite@main/images/awards/yellow/imdb.png');
 }
 
 
