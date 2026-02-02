@@ -69,6 +69,7 @@ progress[aria-valuenow]:before,               /* Progress bar fill (pseudo-eleme
 .layout-desktop .dashboardDocument div[data-role="controlgroup"] a.ui-btn-active, /* Active tabs in dashboard control groups (Desktop) */
 .layout-desktop #editItemMetadataPage .btnHeaderSave, /* Save button in metadata editor header (Desktop) */
 .layout-desktop .mainDetailButtons .btnPlay,    /* Play button on details page (Desktop) */
+.layout-desktop .mainDetailButtons .button-flat.btnPlay,    /* Play button on details page (Desktop JMP) */
 .layout-mobile .mainDetailButtons .btnPlay,     /* Play button on details page (Mobile) */
 .layout-tv .mainDetailButtons .btnPlay,     /* Play button on details page (TV) */
 .playbackProgress>div,                        /* Inner bar of playback progress sliders */
@@ -2289,6 +2290,14 @@ h3.tagline {
         background: var(--secondary-background-color) !important;
         backdrop-filter: none !important;
     }
+    .itemDetailsGroup {
+    background: var(--secondary-background-transparent);
+    padding: 10px 0 0;
+    border-radius: var(--rounded-cards);
+    max-width: 100%;
+    backdrop-filter: blur(var(--blur));
+    }
+
 }
 
 
