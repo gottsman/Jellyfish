@@ -17,18 +17,6 @@
     transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* For mobile portrait - smooth pan with proper bounds */
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    .slide .backdrop {
-        transform: translateX(0) scale(1.2);
-        transition: transform 15s ease-in-out !important;
-    }
-
-    .slide.active .backdrop {
-        transform: translateX(-8%) scale(1.2);
-    }
-}
-
 /* --- Content Animation --- */
 /* Default state for all content (when slide is NOT active) */
 .slide .logo-container,
