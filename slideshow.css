@@ -17,25 +17,6 @@
     transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* --- Backdrop Animation (Ken Burns) --- */
-.slide .backdrop {
-    transform: scale(1);
-    filter: brightness(0.6);
-    transition: transform 12s ease-out, filter 12s ease-out !important;
-}
-
-.slide.active .backdrop {
-    transform: scale(1.08);
-    filter: brightness(0.7);
-}
-
-/* Enhanced Ken Burns with subtle rotation for desktop */
-@media only screen and (min-width: 1025px) {
-    .slide.active .backdrop {
-        transform: scale(1.08) rotate(0.5deg);
-    }
-}
-
 /* For mobile portrait - smooth pan with proper bounds */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
     .slide .backdrop {
@@ -218,8 +199,6 @@
 .arrow {
   background-color: rgba(0, 0, 0, 0.5) !important;
   border-radius: 50% !important;
-  width: clamp(3rem, 4vw, 5rem) !important;
-  height: clamp(3rem, 4vw, 5rem) !important;
   transition: all 0.3s ease !important;
   display: flex !important;
   align-items: center !important;
@@ -305,7 +284,7 @@
 }
 
 /* Move Pause Button to Bottom */
-.pause-button {
+.pause-button, .mute-button {
   top: auto !important;
-  bottom: 5rem !important;
+  bottom: 20rem !important;
 }
