@@ -46,6 +46,9 @@
 .slide.active .plot-container   { transition-delay: 0.65s !important; }
 .slide.active .button-container { transition-delay: 0.8s !important; }
 
+.homeSectionsContainer {
+  margin-top: 0vh !important;
+}
 
 
 /* --- Backdrop & Gradient Styling --- */
