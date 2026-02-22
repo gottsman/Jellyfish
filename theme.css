@@ -2171,11 +2171,6 @@ h3.tagline {
 .layout-tv .headerLeft { padding: 5px !important; } /* Adjust padding for left header on TV */
 
 /* == Font and Overlap Fixes for Media Bar Area == */
-/* Addresses issues with the first content section overlapping the media bar (Now Playing bar) and standardizes fonts in that area. */
-
-.homeSectionsContainer {
-    top: 69vh !important;
-}
 
 /* Add some breathing space for now playing container or others */
 .sections.homeSectionsContainer {
