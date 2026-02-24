@@ -199,7 +199,7 @@ In item details page, show text for Play, Trailer, Mark as watched etc.
 
 <h3><img src="./logos/streamberry.png" alt="streamberry" width="12%" align="center"/> Logo</h3>
 
-Streamberry Logo (inspired by Black Mirror) instead of Jellyfish Logo. Included by default with [jellyflix.css](colors\jellyflix.css)
+Streamberry Logo (inspired by Black Mirror) instead of Jellyfish Logo. Included by default with [jellyflix.css](colors/jellyflix.css)
 
 ``` css
 @import url("https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/streamberry_logo.css");
